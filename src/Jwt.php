@@ -103,7 +103,7 @@ class Jwt
      */
     public function validate($token)
     {
-        $token = $this->parseToken($token);
+        $this->token = $this->parseToken($token);
 
         $jwtConfiguration = $this->getValidateConfig();
 
@@ -114,7 +114,7 @@ class Jwt
 
         $constraints = $jwtConfiguration->validationConstraints();
 
-        return $jwtConfiguration->validator()->validate($token, ...$constraints);
+        return $jwtConfiguration->validator()->validate($this->token, ...$constraints);
     }
 
     /**
@@ -126,5 +126,14 @@ class Jwt
             $this->config->getSigner(),
             $this->config->RSASigner() ? $this->config->getPublicKey() : $this->config->getHamcKey()
         );
+    }
+
+    /**
+     * 验证成功后的Token
+     * @return Token
+     */
+    public function getVerifyToken()
+    {
+        return $this->token;
     }
 }

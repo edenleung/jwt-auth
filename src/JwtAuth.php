@@ -64,4 +64,13 @@ class JwtAuth
     {
         return $this->jwt->parseToken($token);
     }
+
+    /**
+     * 获取验证后的Token对象
+     * @return Token
+     */
+    public function getVerifyToken()
+    {
+        return $this->jwt->getVerifyToken();
+    }
 }
