@@ -36,8 +36,6 @@ class JwtAuth
 
     protected function initEvent()
     {
-        // $this->config->getEventHandler()
-        var_dump($this->config->getEventHandler());
         $this->event = new Event($this->config->getEventHandler());
     }
 
@@ -75,6 +73,7 @@ class JwtAuth
     }
 
     /**
+     * 解析 Token
      * @param $token jwt token
      * @return Token
      */
