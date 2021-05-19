@@ -4,6 +4,7 @@ use JwtAuth\Config;
 use JwtAuth\JwtAuth;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/EventHandler.php';
 
 $options = [
     'signer_key'    => 'oP0qmqzHS4Vvml5a',
@@ -18,10 +19,11 @@ $options = [
     'refresh_code'  => 50002,
     'iss'           => 'client.tant',
     'aud'           => 'server.tant',
+    'event_handler' => EventHandler::class
 ];
 
 $auth = new JwtAuth(new Config($options));
 
 $id = 1;
 $token = $auth->token($id, ['time' => time()])->toString();
-var_dump($auth->parseToken($token));
+// var_dump($auth->parseToken($token));

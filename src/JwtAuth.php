@@ -16,6 +16,11 @@ class JwtAuth
      */
     protected $jwt;
 
+    /**
+     * @var Event
+     */
+    protected $event;
+
     public function __construct(Config $config)
     {
         $this->config = $config;
@@ -25,6 +30,15 @@ class JwtAuth
     protected function init()
     {
         $this->jwt = new Jwt($this);
+
+        $this->initEvent();
+    }
+
+    protected function initEvent()
+    {
+        // $this->config->getEventHandler()
+        var_dump($this->config->getEventHandler());
+        $this->event = new Event($this->config->getEventHandler());
     }
 
     /**
@@ -44,7 +58,11 @@ class JwtAuth
      */
     public function token($id, $cliams = [])
     {
-        return $this->jwt->make($id, $cliams);
+        $token = $this->jwt->make($id, $cliams);
+
+        $this->event->login($token);
+
+        return $token;
     }
 
     /**

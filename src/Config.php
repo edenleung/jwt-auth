@@ -9,6 +9,7 @@ use Lcobucci\JWT\Signer\Key\LocalFileReference;
 use Lcobucci\JWT\Signer\Hmac;
 use Lcobucci\JWT\Signer\Rsa;
 use Lcobucci\JWT\Signer;
+use JwtAuth\EventHandler;
 
 class Config
 {
@@ -33,6 +34,11 @@ class Config
     protected $public_key = '';
 
     protected $private_key = '';
+
+    /**
+     * @var EventHandler
+     */
+    protected $event_handler;
 
     public function __construct(array $options)
     {
@@ -128,5 +134,10 @@ class Config
     public function getType()
     {
         return $this->type;
+    }
+
+    public function getEventHandler()
+    {
+        return $this->event_handler ?: null;
     }
 }
