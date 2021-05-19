@@ -34,8 +34,11 @@ $options = [
 
 $auth = new JwtAuth(new Config($options));
 
+// 用户 id
 $id = 1;
-$token = $auth->token($id, ['time' => time()])->toString();
+// 附带参数
+$cliasm = [];
+$token = $auth->token($id, $cliams)->toString();
 
 // 生成 token
 var_dump($token);
