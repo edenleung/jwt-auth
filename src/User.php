@@ -2,6 +2,7 @@
 
 namespace JwtAuth;
 
+use JwtAuth\Exception\InvalidArgumentException;
 use think\User\AuthorizationUserInterface;
 
 class User
@@ -17,7 +18,7 @@ class User
         if ($class instanceof AuthorizationUserInterface) {
             $this->model = $class;
         } else {
-            throw new \Exception('must be implements \think\User\AuthorizationUserInterface');
+            throw new InvalidArgumentException('must be implements \think\User\AuthorizationUserInterface');
         }
     }
 

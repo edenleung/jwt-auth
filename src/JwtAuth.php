@@ -4,6 +4,8 @@ namespace JwtAuth;
 
 use Lcobucci\JWT\Token;
 use think\User\AuthorizationUserInterface;
+use JwtAuth\Exception\InvalidArgumentException;
+
 class JwtAuth
 {
     /**
@@ -115,6 +117,6 @@ class JwtAuth
             return $this->user->get($this->jwt);
         }
 
-        throw new \Exception('jwt.user_model required');
+        throw new InvalidArgumentException('jwt.user_model required');
     }
 }

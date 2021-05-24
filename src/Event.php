@@ -2,7 +2,7 @@
 
 namespace JwtAuth;
 
-use Exception;
+use JwtAuth\Exception\InvalidArgumentException;
 use JwtAuth\EventHandler;
 
 class Event
@@ -19,7 +19,7 @@ class Event
             if ($class instanceof EventHandler) {
                 $this->handle = $class;
             } else {
-                throw new Exception('must be implements \JwtAuth\EventHandler');
+                throw new InvalidArgumentException('must be implements \JwtAuth\EventHandler');
             }
         }
     }
