@@ -8,7 +8,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "lcobucci/jwt": "4.*"
+        "lcobucci/jwt": "4.*",
+        "xiaodi/think-user": "0.0.1"
     },
     "autoload": {
         "psr-4": {

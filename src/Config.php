@@ -31,6 +31,8 @@ class Config
 
     protected $automatic_renewal = false;
 
+    protected $user_model;
+
     protected $public_key = '';
 
     protected $private_key = '';
@@ -139,5 +141,10 @@ class Config
     public function getEventHandler()
     {
         return $this->event_handler ?: null;
+    }
+
+    public function getUserModel()
+    {
+        return $this->user_model;
     }
 }

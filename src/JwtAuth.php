@@ -21,6 +21,11 @@ class JwtAuth
      */
     protected $event;
 
+    /**
+     * @var User
+     */
+    protected $user;
+
     public function __construct(Config $config)
     {
         $this->config = $config;
@@ -31,7 +36,15 @@ class JwtAuth
     {
         $this->jwt = new Jwt($this);
 
+        $this->initUser();
         $this->initEvent();
+    }
+
+    protected function initUser()
+    {
+        if ($model = $this->config->getUserModel()) {
+            $this->user = new User($model);
+        }
     }
 
     protected function initEvent()
@@ -89,5 +102,15 @@ class JwtAuth
     public function getVerifyToken()
     {
         return $this->jwt->getVerifyToken();
+    }
+
+    /**
+     * 获取登录用户对象
+     * 
+     * @return User|null|Exception
+     */
+    public function getUser()
+    {
+        return $this->user->get($this->jwt);
     }
 }

@@ -19,9 +19,13 @@ $options = [
     'refresh_code'  => 50002,
     'iss'           => 'client.tant',
     'aud'           => 'server.tant',
-    'event_handler' => EventHandler::class
+    'event_handler' => EventHandler::class,
+    'user_model'    => \app\common\model\User::class
 ];
 
+// $manger = new Manager([
+//     'sso' => true,
+// ]);
 $auth = new JwtAuth(new Config($options));
 
 $id = 1;
