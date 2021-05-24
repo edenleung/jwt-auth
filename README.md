@@ -1,6 +1,6 @@
 # jwt-auth
 
-## isntall
+## install
 
 ```bash
 
@@ -30,6 +30,7 @@ $options = [
     'refresh_code'  => 50002,
     'iss'           => 'client.tant',
     'aud'           => 'server.tant',
+    'user_model'    => \app\common\model\User::class
 ];
 
 $auth = new JwtAuth(new Config($options));
@@ -55,4 +56,6 @@ var_dump($auth->getVerifyToken()->claims()->get('jti'));
 // 解析 token
 var_dump($auth->parseToken($token));
 
+// 获取效验后的用户模型对象
+var_dump($auth->getUser());
 ```
