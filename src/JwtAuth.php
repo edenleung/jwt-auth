@@ -3,7 +3,7 @@
 namespace JwtAuth;
 
 use Lcobucci\JWT\Token;
-
+use think\User\AuthorizationUserInterface;
 class JwtAuth
 {
     /**
@@ -107,10 +107,14 @@ class JwtAuth
     /**
      * 获取登录用户对象
      * 
-     * @return User|null|Exception
+     * @return AuthorizationUserInterface|null
      */
     public function getUser()
     {
-        return $this->user->get($this->jwt);
+        if ($this->user) {
+            return $this->user->get($this->jwt);
+        }
+
+        throw new \Exception('jwt.user_model required');
     }
 }

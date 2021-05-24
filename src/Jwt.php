@@ -7,6 +7,7 @@ use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Token;
 use DateTimeZone;
 use DateTimeImmutable;
+use Exception;
 use Lcobucci\Clock\SystemClock;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;
 use Lcobucci\JWT\Validation\Constraint\ValidAt;
@@ -130,10 +131,15 @@ class Jwt
 
     /**
      * 验证成功后的Token
-     * @return Token
+     * 
+     * @return Token|Exception
      */
     public function getVerifyToken()
     {
-        return $this->token;
+        if ($this->token) {
+            return $this->token;
+        }
+
+        throw new Exception('Not logged in');
     }
 }
