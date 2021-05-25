@@ -2,12 +2,19 @@
 
 ## install
 
+### 开发版
 ```bash
 
 composer require xiaodi/jwt-auth:dev-master
 
 ```
 
+### 正式包
+```bash
+
+composer require xiaodi/jwt-auth
+
+```
 ## example
 
 ```php
