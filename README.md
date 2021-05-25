@@ -71,3 +71,4 @@ var_dump($auth->getUser());
 - [ ] phpunit
 - [ ] manger event handler
 - [ ] sso
+- [ ] exceptions
