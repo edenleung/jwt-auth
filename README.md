@@ -66,3 +66,8 @@ var_dump($auth->parseToken($token));
 // 获取效验后的用户模型对象
 var_dump($auth->getUser());
 ```
+
+# TODO
+- [ ] phpunit
+- [ ] manger event handler
+- [ ] sso
