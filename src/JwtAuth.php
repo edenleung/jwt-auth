@@ -80,6 +80,7 @@ class JwtAuth
 
     /**
      * 检测合法性
+     * @param string $token
      * @return bool
      */
     public function verify($token)
@@ -89,7 +90,7 @@ class JwtAuth
 
     /**
      * 解析 Token
-     * @param $token jwt token
+     * @param string $token
      * @return Token
      */
     public function parseToken($token)
