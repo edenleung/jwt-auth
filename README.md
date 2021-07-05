@@ -1,13 +1,20 @@
 # jwt-auth
 
-## isntall
+## install
 
+### 开发版
 ```bash
 
 composer require xiaodi/jwt-auth:dev-master
 
 ```
 
+### 正式包
+```bash
+
+composer require xiaodi/jwt-auth
+
+```
 ## example
 
 ```php
@@ -30,6 +37,7 @@ $options = [
     'refresh_code'  => 50002,
     'iss'           => 'client.tant',
     'aud'           => 'server.tant',
+    'user_model'    => \app\common\model\User::class
 ];
 
 $auth = new JwtAuth(new Config($options));
@@ -55,4 +63,12 @@ var_dump($auth->getVerifyToken()->claims()->get('jti'));
 // 解析 token
 var_dump($auth->parseToken($token));
 
+// 获取效验后的用户模型对象
+var_dump($auth->getUser());
 ```
+
+# TODO
+- [ ] phpunit
+- [ ] manger event handler
+- [ ] sso
+- [ ] exceptions
