@@ -39,7 +39,7 @@ class Jwt
 
     /**
      * 加密配置
-     * 
+     *
      * @return void
      */
     protected function initJwtConfiguration()
@@ -98,7 +98,7 @@ class Jwt
 
     /**
      * 效验 Token
-     * 
+     *
      * @param string $token
      * @return bool
      */
@@ -125,13 +125,13 @@ class Jwt
     {
         return Configuration::forSymmetricSigner(
             $this->config->getSigner(),
-            $this->config->RSASigner() ? $this->config->getPublicKey() : $this->config->getHamcKey()
+            $this->config->RSASigner() ? $this->config->getPublicKey() : $this->config->getHmacKey()
         );
     }
 
     /**
      * 验证成功后的Token
-     * 
+     *
      * @return Token|Exception
      */
     public function getVerifyToken()

@@ -28,9 +28,10 @@ class JwtAuth
      */
     protected $user;
 
-    public function __construct(Config $config)
+    public function __construct(Config $config, EventHandler $event = null)
     {
         $this->config = $config;
+        $this->event = $event;
         $this->init();
     }
 
@@ -39,7 +40,6 @@ class JwtAuth
         $this->jwt = new Jwt($this);
 
         $this->initUser();
-        $this->initEvent();
     }
 
     protected function initUser()
@@ -47,11 +47,6 @@ class JwtAuth
         if ($model = $this->config->getUserModel()) {
             $this->user = new User($model);
         }
-    }
-
-    protected function initEvent()
-    {
-        $this->event = new Event($this->config->getEventHandler());
     }
 
     /**
@@ -66,31 +61,32 @@ class JwtAuth
      * 生成 Token
      * @param $id  唯一标识
      * @param $cliams 附带参数
-     * 
+     *
      * @return Token
      */
     public function token($id, $cliams = [])
     {
         $token = $this->jwt->make($id, $cliams);
 
-        $this->event->login($token);
+        $this->event->login(($this->parseToken($token));
 
         return $token;
     }
 
     /**
      * 检测合法性
-     * @param string $token
      * @return bool
      */
     public function verify($token)
     {
-        return $this->jwt->validate($token);
+        $flag = $this->jwt->validate($token);
+        $this->event->verify($this->parseToken($token));
+        return $flag;
     }
 
     /**
      * 解析 Token
-     * @param string $token
+     * @param $token jwt token
      * @return Token
      */
     public function parseToken($token)
@@ -109,7 +105,7 @@ class JwtAuth
 
     /**
      * 获取登录用户对象
-     * 
+     *
      * @return AuthorizationUserInterface|null
      */
     public function getUser()

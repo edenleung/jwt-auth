@@ -100,7 +100,7 @@ class Config
 
     /**
      * 获取 加密密钥
-     * 
+     *
      * @return \Lcobucci\JWT\Signer\Key\InMemory
      */
     public function getHmacKey(): Key
@@ -113,8 +113,8 @@ class Config
     }
 
     /**
-     * 获取 是否使用 RSA 加密 
-     * 
+     * 获取 是否使用 RSA 加密
+     *
      * @return bool
      */
     public function RSASigner()
@@ -126,7 +126,7 @@ class Config
 
     /**
      * 获取 加密key
-     * 
+     *
      * @return Key
      */
     public function getSignerKey(): Key
@@ -144,7 +144,7 @@ class Config
 
     /**
      * 获取 RSA 公钥
-     * 
+     *
      * @return Key
      */
     public function getPublicKey(): Key
@@ -154,7 +154,7 @@ class Config
 
     /**
      * 获取 RSA 私钥
-     * 
+     *
      * @return Key
      */
     public function getPrivateKey(): Key
@@ -164,7 +164,7 @@ class Config
 
     /**
      * 获取有效果期
-     * 
+     *
      * @return number
      */
     public function getExpires()
@@ -174,7 +174,7 @@ class Config
 
     /**
      * 获取刷新ttl
-     * 
+     *
      * @return string
      */
     public function getRefreshTTL()
@@ -184,7 +184,7 @@ class Config
 
     /**
      * 获取iss
-     * 
+     *
      * @return string
      */
     public function getIss(): string
@@ -194,7 +194,7 @@ class Config
 
     /**
      * 获取auid
-     * 
+     *
      * @return string
      */
     public function getAud(): string
@@ -204,7 +204,7 @@ class Config
 
     /**
      * 获取not_before
-     * 
+     *
      * @return number
      */
     public function getNotBefore()
@@ -214,7 +214,7 @@ class Config
 
     /**
      * 获取加密对象
-     * 
+     *
      * @return Signer
      */
     public function getSigner(): Signer
@@ -225,7 +225,7 @@ class Config
 
     /**
      * 获取重新登录code
-     * 
+     *
      * @return number
      */
     public function getReloginCode()
@@ -235,7 +235,7 @@ class Config
 
     /**
      * 获取刷新code
-     * 
+     *
      * @return number
      */
     public function getRefreshCode()
@@ -245,7 +245,7 @@ class Config
 
     /**
      * 获取是否自动续签
-     * 
+     *
      * @return bool
      */
     public function getAutomaticRenewal()
@@ -255,7 +255,7 @@ class Config
 
     /**
      * 获取token途径
-     * 
+     *
      * @return string|null
      */
     public function getType()
@@ -265,7 +265,7 @@ class Config
 
     /**
      * 获取事件
-     * 
+     *
      * @return string|null
      */
     public function getEventHandler()
@@ -275,7 +275,7 @@ class Config
 
     /**
      * 获取用户模型
-     * 
+     *
      * @return string|null
      */
     public function getUserModel()
