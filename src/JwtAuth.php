@@ -68,7 +68,7 @@ class JwtAuth
     {
         $token = $this->jwt->make($id, $cliams);
 
-        $this->event->login(($this->parseToken($token));
+        $this->event->login($token);
 
         return $token;
     }
